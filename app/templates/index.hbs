@@ -1,0 +1,27 @@
+<div class="jumbotron text-center">
+  <h1>cooperativApp</h1>
+  <p>No te pierdas ningún evento en nuestra sede y disfruta de los recursos que compartimos en esta nuestra cooperativa.</p>
+
+  <div class="form-horizontal form-group form-group-lg has-feedback row">
+
+    <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-2">
+      <div class="input-group">
+        <span class="input-group-addon">@</span>
+        {{input type="email" value=emailAddress class="form-control" placeholder="e-mail" autofocus="autofocus"}}
+{{#if isValid}}
+<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+{{else}}
+<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+{{/if}}
+    </div>
+    </div>
+    <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-4 col-md-3">
+        <button disabled={{isDisabled}} {{action 'saveReg'}} class="btn btn-primary btn-lg btn-block "><span class="glyphicon glyphicon-send" aria-hidden="true"></span></button>
+    </div>
+  </div>
+
+{{#if responseMessage}}
+  <div class="alert alert-success">{{responseMessage}}</div>
+{{/if}}
+
+</div>

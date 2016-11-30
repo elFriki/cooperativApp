@@ -1,0 +1,24 @@
+<!-- app/templates/admin/seeder.hbs -->
+<h1><span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span></h1>
+
+<div class="row">
+  <div class="col-md-4">{{number-box title="Librerías" number=libraries.length}}</div>
+  <div class="col-md-4">{{number-box title="Autores" number=authors.length}}</div>
+  <div class="col-md-4">{{number-box title="Libros" number=books.length}}</div>
+  <div class="col-md-4">{{number-box title="Propietarios" number=owners.length}}</div>
+</div>
+
+
+{{seeder-block
+    sectionTitle='Librarías'
+    generateAction='generateLibraries'
+    deleteAction='deleteLibraries'
+    createReady=libDone
+    deleteReady=libDelDone}}
+
+{{seeder-block
+    sectionTitle='Autores con libros'
+    generateAction='generateBooksAndAuthors'
+    deleteAction='deleteBooksAndAuthors'
+    createReady=authDone
+    deleteReady=authDelDone}}

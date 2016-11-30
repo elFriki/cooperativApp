@@ -1,0 +1,38 @@
+<table class="table table-bordered table-striped">
+  <thead>
+  <tr>
+    <th>
+       Nombre <small class="small not-bold">(Click para editar)</small>
+    </th>
+    <th class="vtop">Libros</th>
+  </tr>
+  </thead>
+  <tbody>
+  {{#each model as |author|}}
+    <tr>
+      <td>
+        {{#if author.isEditing}}
+          <form {{action 'saveAuthor' author on='submit'}} class="form-inline">
+            <div class="input-group">
+              {{input value=author.name class="form-control"}}
+              <div class="input-group-btn">
+                <button type="submit" class="btn btn-success" disabled={{author.isNotValid}}><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+                <button class="btn btn-danger" {{action 'cancelAuthorEdit' author}}><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+              </div>
+            </div>
+          </form>
+        {{else}}
+          <span {{action 'editAuthor' author}}>{{author.name}}</span>
+        {{/if}}
+      </td>
+      <td>
+        <ul>
+          {{#each author.books as |book|}}
+            <li>{{book.title}}</li>
+          {{/each}}
+        </ul>
+      </td>
+    </tr>
+  {{/each}}
+  </tbody>
+</table>
